@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type MouseEventHandler } from 'react';
+import React, { useState, type MouseEventHandler } from 'react';
 import type { Card as CardType } from '../types/game';
 import { Card } from './Card';
 import RecycleIcon from '../assets/icons/recycle.svg?react';
@@ -10,26 +10,20 @@ interface StockAndWasteProps {
 export const StockAndWaste: React.FC<StockAndWasteProps> = ({ cards }) => {
   const [stock, setStock] = useState<CardType[]>(cards);
   const [waste, setWaste] = useState<CardType[]>([]);
-  const [isStockEmpty, setIsStockEmpty] = useState(false);
+
+  const isStockEmpty = stock.length === 0 && waste.length > 0;
 
   const handleDraw: MouseEventHandler<HTMLDivElement> = () => {
     if (stock.length === 0 && waste.length > 0) {
-      setStock(waste);
+      setStock(waste.reverse());
       setWaste([]);
       return;
     }
 
-    setStock(stock.slice(3));
-    setWaste([...waste, ...stock.slice(0, 3)]);
+    const cardsToMove = stock.slice(-3).reverse();
+    setStock(stock.slice(0, -3));
+    setWaste([...waste, ...cardsToMove]);
   };
-
-  useEffect(() => {
-    if (stock.length === 0 && waste.length > 0) {
-      setIsStockEmpty(true);
-    } else {
-      setIsStockEmpty(false);
-    }
-  }, [stock, waste.length]);
 
   return (
     <div className="flex gap-8">
@@ -56,13 +50,13 @@ export const StockAndWaste: React.FC<StockAndWasteProps> = ({ cards }) => {
         {waste.length > 0 && (
           <>
             <div className="z-0">
-              <Card card={waste[waste.length - 1]} />
+              <Card card={waste[waste.length - 3]} />
             </div>
             <div className="z-10 relative top-0 -left-12">
               <Card card={waste[waste.length - 2]} />
             </div>
             <div className="z-20 relative top-0 -left-24">
-              <Card card={waste[waste.length - 3]} />
+              <Card card={waste[waste.length - 1]} />
             </div>
           </>
         )}
