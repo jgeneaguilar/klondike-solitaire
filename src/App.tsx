@@ -1,6 +1,6 @@
-import { Card } from './components/Card';
 import { Foundation } from './components/Foundation';
 import { StockAndWaste } from './components/StockAndWaste';
+import { Tableau } from './components/Tableau';
 import type { Card as CardType } from './types/game';
 
 function App() {
@@ -26,13 +26,9 @@ function App() {
       <div className="text-center">
         <h1 className="text-6xl font-bold text-white mb-4">Solitaire Game</h1>
       </div>
-      <div className="flex items-center gap-4">
-        {sampleCards.slice(0, 5).map((card, index) => (
-          <Card key={index} card={card} />
-        ))}
-      </div>
       <StockAndWaste cards={sampleCards} />
       <Foundation />
+      <Tableau />
     </div>
   );
 }
