@@ -26,10 +26,10 @@ export const StockAndWaste: React.FC<StockAndWasteProps> = ({ cards }) => {
   };
 
   return (
-    <div className="flex gap-8">
+    <div className="flex gap-4 max-w-2xs">
       {/* Stock Pile */}
       <div
-        className="flex items-center bg-slate-700 border-2 border-gray-800 rounded-lg shadow-xl font-bold h-25 w-18 hover:shadow-black/50 transition-shadow cursor-pointer hover:scale-106"
+        className="flex items-center shrink-0 bg-slate-700 border-2 border-gray-800 rounded-lg shadow-xl font-bold h-25 w-18 hover:shadow-black/50 transition-shadow cursor-pointer hover:scale-106"
         onClick={handleDraw}
       >
         {!isStockEmpty ? (
@@ -46,7 +46,7 @@ export const StockAndWaste: React.FC<StockAndWasteProps> = ({ cards }) => {
       </div>
 
       {/* Waste Pile */}
-      <div className="flex items-center rounded-lg h-25 w-60">
+      <div className="flex items-center rounded-lg h-25 w-40">
         {waste.length > 0 && (
           <>
             <div className="z-0">

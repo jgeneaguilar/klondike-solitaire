@@ -1,6 +1,4 @@
-import { Foundation } from './components/Foundation';
-import { StockAndWaste } from './components/StockAndWaste';
-import { Tableau } from './components/Tableau';
+import { GameBoard } from './components/GameBoard';
 import type { Card as CardType } from './types/game';
 
 function App() {
@@ -22,13 +20,11 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-green-800 flex items-center justify-center flex-col select-none gap-4">
+    <div className="min-h-screen bg-green-800 flex items-center flex-col select-none gap-4">
       <div className="text-center">
         <h1 className="text-6xl font-bold text-white mb-4">Solitaire Game</h1>
       </div>
-      <StockAndWaste cards={sampleCards} />
-      <Foundation />
-      <Tableau />
+      <GameBoard cards={sampleCards} />
     </div>
   );
 }

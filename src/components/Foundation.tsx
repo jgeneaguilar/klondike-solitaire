@@ -9,7 +9,7 @@ interface FoundationPile {
 
 const MAX_PILES = 4;
 export const Foundation: React.FC = () => {
-  const [foundationPiles, setFoundationPiles] = useState<FoundationPile[]>([]);
+  const [foundationPiles] = useState<FoundationPile[]>([]);
 
   return (
     <div className="flex gap-4">

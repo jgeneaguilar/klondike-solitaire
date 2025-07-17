@@ -64,7 +64,7 @@ export const Tableau: React.FC = () => {
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-4">
       {tableauPiles.map((pile, index) => (
         <div key={`tableau-pile-${index}`} className="flex flex-col gap-2">
           {pile.length > 0 ? (
