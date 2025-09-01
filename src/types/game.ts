@@ -1,22 +1,24 @@
-export type Suit = 'diamonds' | 'hearts' | 'spades' | 'clubs';
+import type { ranks, suits } from '../utils/constants';
 
-export type Rank =
-  | 'A'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | '7'
-  | '8'
-  | '9'
-  | '10'
-  | 'J'
-  | 'Q'
-  | 'K';
+export type Suit = (typeof suits)[number];
+
+export type Rank = (typeof ranks)[number];
 
 export interface Card {
   suit: Suit;
   rank: Rank;
   isFaceUp: boolean;
+}
+
+export interface FoundationPile {
+  suit: Suit;
+  cards: Card[];
+}
+
+export interface GameState {
+  foundation: FoundationPile[];
+  gameStatus: 'playing' | 'won' | 'lost';
+  stock: Card[];
+  tableau: Card[][];
+  waste: Card[];
 }

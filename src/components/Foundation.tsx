@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import type { Card as CardType, Suit } from '../types/game';
+import type { FoundationPile } from '../types/game';
 import { Card } from './Card';
 
-interface FoundationPile {
-  suit: Suit;
-  cards: CardType[];
+interface FoundationProps {
+  foundation: FoundationPile[];
 }
 
 const MAX_PILES = 4;
-export const Foundation: React.FC = () => {
-  const [foundationPiles] = useState<FoundationPile[]>([]);
+export const Foundation: React.FC<FoundationProps> = ({ foundation }) => {
+  const [foundationPiles] = useState<FoundationPile[]>(foundation);
 
   return (
     <div className="flex gap-4">
